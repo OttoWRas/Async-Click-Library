@@ -3,7 +3,6 @@ USE ieee.std_logic_1164.ALL;
 USE work.defs.ALL;
 
 PACKAGE Async_Click IS
-    CONSTANT DATA_WIDTH : INTEGER := 16;
     COMPONENT arbiter IS
         PORT (
             rst : IN STD_LOGIC;
