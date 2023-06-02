@@ -32,8 +32,8 @@ BEGIN
     inB_ack <= inB_done;
     rgdmx : ENTITY rgd_mutex PORT MAP (
         rst,
-        inA_req, inA_req_mux, inA_done,
-        inB_req, inB_req_mux, inB_done
+        inA_req => inA_req, outA_req => inA_req_mux, inA_done => inA_done,
+        inB_req => inB_req, outB_req => inB_req_mux, inB_done => inB_done
         );
     mrg : ENTITY merge PORT MAP (
         rst, 
@@ -84,9 +84,9 @@ begin
 
     rst <= '1' , '0' after 5 ns, '1' after 500 ns;
     inA_req <= '0', '1' after 25 ns;
-    inA_data <= "0000000000000001"; 
+    inA_data <= "00000000000000000001"; 
     inB_req <= '0', '1' after 55 ns;
-    inB_data <= "0000000000000010";  
+    inB_data <= "00000000000000000010";  
     outC_ack <= '0', '1' after 80 ns;
 
 end architecture;

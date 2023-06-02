@@ -89,8 +89,8 @@ BEGIN
     pulse_b <= ((NOT (phase_out_c) AND inB_req) AND NOT (phase_in_b)) OR ((phase_out_c AND NOT (inB_req)) AND phase_in_b) AFTER AND3_DELAY + OR2_DELAY;
 
     -- Input state
-    a_ready <= phase_in_a XOR inA_done;
-    b_ready <= phase_in_b XOR inB_done;
+    a_ready <= phase_in_a XOR inA_done after XOR_DELAY;
+    b_ready <= phase_in_b XOR inB_done after XOR_DELAY;
 
     -- Control path
     outA_req <= phase_out_a;
